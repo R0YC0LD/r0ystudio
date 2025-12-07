@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDAW - FL Style</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header id="transport">
+        <div class="logo">WebDAW</div>
+        
+        <div class="controls-group">
+            <button id="btn-play" title="Play (Space)">&#9658;</button>
+            <button id="btn-stop" title="Stop (Space)">&#9632;</button>
+            <button id="btn-record" title="Record" class="record-btn">&#9679;</button>
+        </div>
+
+        <div class="controls-group display-box">
+            <div class="lcd-screen">
+                <div id="lcd-time">00:00:00</div>
+                <div class="lcd-sub">BAR <span id="lcd-bar">1.1.0</span></div>
+            </div>
+        </div>
+
+        <div class="controls-group">
+            <label>BPM</label>
+            <input type="number" id="bpm-input" value="130" min="20" max="300">
+        </div>
+
+        <div class="controls-group">
+            <button id="btn-save">Save Project</button>
+            <button id="btn-export">Export WAV</button>
+        </div>
+        
+        <div class="controls-group" style="margin-left:auto;">
+             <div id="cpu-meter">CPU: 0%</div>
+        </div>
+    </header>
+
+    <div id="workspace">
+        
+        <aside id="browser-panel">
+            <div class="panel-header">Browser <span class="collapse-btn">_</span></div>
+            <div class="browser-content" id="sample-list">
+                <div class="browser-item" draggable="true" data-type="synth">Change to Synth</div>
+                <div class="browser-item" draggable="true" data-type="sampler">New Sampler</div>
+            </div>
+            <div class="upload-zone" id="drop-zone">
+                Drag WAV/MP3 Here
+            </div>
+        </aside>
+
+        <main id="main-window">
+            
+            <div class="window-tabs">
+                <button class="tab-btn active" data-target="playlist-view">Playlist</button>
+                <button class="tab-btn" data-target="piano-roll-view">Piano Roll</button>
+                <button class="tab-btn" data-target="channel-rack-view">Channel Rack</button>
+            </div>
+
+            <div id="playlist-view" class="view-panel active">
+                <div class="canvas-container">
+                    <canvas id="playlist-canvas"></canvas>
+                </div>
+            </div>
+
+            <div id="piano-roll-view" class="view-panel">
+                <div class="piano-roll-container">
+                    <div class="piano-keys" id="piano-keys-container">
+                        </div>
+                    <div class="piano-grid">
+                        <canvas id="piano-canvas"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div id="channel-rack-view" class="view-panel">
+                <div class="rack-container" id="channel-list">
+                    </div>
+                <button id="add-channel-btn">+ Add Channel</button>
+            </div>
+
+        </main>
+
+        <aside id="mixer-panel">
+            <div class="panel-header">Mixer <span class="collapse-btn">_</span></div>
+            <div class="mixer-scroll">
+                <div class="mixer-container" id="mixer-strips">
+                    </div>
+            </div>
+            <div id="fx-rack">
+                <div class="panel-header">Effects Chain</div>
+                <div id="fx-slots">
+                    </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <input type="file" id="file-import" multiple style="display:none;">
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
